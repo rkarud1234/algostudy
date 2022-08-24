@@ -1,3 +1,5 @@
+package kgs;
+
 import java.io.*;
 import java.util.*;
 public class BOJ21611 {
@@ -18,7 +20,6 @@ public class BOJ21611 {
         s = new int[m];
         d = new int[m];
         blocks = new Block[n * n];
-
         mapping = new int[n][n];
 
         for(int i = 0; i<n; i++){
@@ -28,19 +29,19 @@ public class BOJ21611 {
             }
         }
 
-
         for(int i = 0; i<m; i++){
             st = new StringTokenizer(br.readLine());
-            d[i] = Integer.parseInt(st.nextToken());
-            s[i] = Integer.parseInt(st.nextToken());
+            d[i] = Integer.parseInt(st.nextToken()); // 바향
+            s[i] = Integer.parseInt(st.nextToken()); // 거리
         }
+
 
         init();
         for(int i = 0; i<m; i++){
-            magic(d[i], s[i]);
+            magic(d[i], s[i]); // 얼음파편 던져서 파괴시키기 1
             reBatch();
-            sequence4Remove();
-            grouping();
+            sequence4Remove(); // 2
+            grouping(); // 3
         }
         System.out.println(ans);
 
@@ -61,7 +62,7 @@ public class BOJ21611 {
             }else{
                 board2[blocks[idx].x][blocks[idx].y] = cnt;
                 board2[blocks[idx + 1].x][blocks[idx + 1].y] = board[x1][y1];
-                idx += 2;
+                idx += 2; // 배치 포인터
                 cnt = 1;
             }
         }
@@ -111,14 +112,19 @@ public class BOJ21611 {
     }
 
     static void reBatch(){
-        int idx = 1;
-        for(int i = 1; i<n*n; i++){
+        int idx = 1; // 배치 포인터 1
+        for(int i = 1; i<n*n; i++){ // 검사 포인터 2
             if(delete[i]) continue;
 
+            // 배치 포인터
             int x1 = blocks[idx].x;
             int y1 = blocks[idx].y;
+
+            // 검사 포인터
             int x2 = blocks[i].x;
             int y2 = blocks[i].y;
+
+            // 배치 포인터에 검사 포인터가 가리키는 블록의 번호를 집어 넣는다.
             board[x1][y1] = board[x2][y2];
             idx++;
         }
@@ -154,7 +160,6 @@ public class BOJ21611 {
                 if(y < 0) return;
                 mapping[x][y] = idx;
                 blocks[idx++] = new Block(x,y);
-
             }
             dir = changeDir(dir);
             cnt++;
