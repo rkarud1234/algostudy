@@ -105,13 +105,11 @@ public class BOJ16235 {
 
     private static class Tree {
         int i, j, age;
-        boolean isDead;
 
         Tree(int i, int j, int age) {
             this.i = i;
             this.j = j;
             this.age = age;
-            this.isDead = false;
         }
     }
 
