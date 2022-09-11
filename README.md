@@ -16,7 +16,6 @@
 
 ## 컨벤션
 - 파일명: BOJ문제번호
-- commit : 문제번호, 문제이름 풀이 (ex: BOJ1000 - A+B)
-- PR: [날짜] 문제번호 - 문제이름 (ex: [20220821] BOJ1000 - A+B)
+- PR제목 및 commit: [날짜] 문제번호 - 문제이름 (ex: [20220821] BOJ1000 - A+B)
 
 ### [해결한 문제](https://github.com/rkarud1234/algostudy/blob/main/problems.md)
